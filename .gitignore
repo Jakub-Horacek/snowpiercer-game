@@ -73,3 +73,5 @@ crashlytics-build.properties
 
 # macOS Finder file that stores custom view settings
 .DS_Store
+./.DS_Store
+/.DS_Store
