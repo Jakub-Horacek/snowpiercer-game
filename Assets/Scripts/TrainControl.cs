@@ -26,16 +26,6 @@ public class trainControl : MonoBehaviour
     {
         float moveVertical = 0.0f;
 
-        // Toggle off autopilot when movement keys are pressed
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
-        {
-            if (autopilot)
-            {
-                autopilot = false;
-                Debug.Log("Autopilot disabled");
-            }
-        }
-
         // Convert current speed from km/h to m/s for calculations
         float currentSpeedMs = KmhToMs(currentSpeedKmh);
 
@@ -110,6 +100,12 @@ public class trainControl : MonoBehaviour
         {
             autopilot = !autopilot;
             Debug.Log("Autopilot " + (autopilot ? "enabled" : "disabled"));
+        }
+
+        if (autopilot && Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+        {
+            autopilot = false;
+            Debug.Log("Autopilot disabled");
         }
     }
 }

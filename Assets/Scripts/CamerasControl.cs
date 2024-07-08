@@ -11,36 +11,27 @@ public class CamerasController : MonoBehaviour
     {
         public GameObject camera;
         public bool canOrbit;
-        private Vector3 initialPosition;
-        private Quaternion initialRotation;
-
-        public void Initialize()
-        {
-            initialPosition = camera.transform.position;
-            initialRotation = camera.transform.rotation;
-        }
-
-        public void ResetPositionAndRotation()
-        {
-            camera.transform.position = initialPosition;
-            camera.transform.rotation = initialRotation;
-        }
     }
 
-    public GameObject cameraOrbitPoint;
+    public Transform cameraOrbitPoint;
     public float rotationSpeed = 5f; // Adjust the rotation speed as needed
 
     private int activeCameraIndex = 0;
+    private bool isOrbiting = false; // Flag to track if orbiting is active
+
+    private Quaternion initialOrbitPointRotation; // Store initial rotation of cameraOrbitPoint
 
     // Start is called before the first frame update
     void Start()
     {
-        // Store initial position and rotation for each camera and disable all cameras except the first one
+        // Disable all cameras except the first one
         for (int i = 0; i < cameraData.Length; i++)
         {
-            cameraData[i].Initialize();
             cameraData[i].camera.SetActive(i == activeCameraIndex);
         }
+
+        // Store initial rotation of cameraOrbitPoint
+        initialOrbitPointRotation = cameraOrbitPoint.rotation;
     }
 
     // Update is called once per frame
@@ -51,7 +42,6 @@ public class CamerasController : MonoBehaviour
             ToggleCameras();
         }
 
-        // Check for numeric key presses to switch cameras
         for (int i = 0; i < cameraData.Length; i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
@@ -60,12 +50,20 @@ public class CamerasController : MonoBehaviour
             }
         }
 
+        // Handle camera orbiting
         if (cameraData[activeCameraIndex].canOrbit)
         {
-            OrbitCamera();
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                OrbitCamera();
+                isOrbiting = true;
+            }
+            else if (isOrbiting)
+            {
+                ResetCameraOrbitPointRotation();
+                isOrbiting = false;
+            }
         }
-
-        ResetCameraPosition();
     }
 
     void ToggleCameras()
@@ -76,8 +74,9 @@ public class CamerasController : MonoBehaviour
 
     void SetActiveCamera(int cameraIndex)
     {
-        // Reset the current active camera position and rotation before changing
-        cameraData[activeCameraIndex].ResetPositionAndRotation();
+        // Reset cameraOrbitPoint rotation when switching cameras
+        ResetCameraOrbitPointRotation();
+
         // Deactivate the current camera
         cameraData[activeCameraIndex].camera.SetActive(false);
         // Update active camera index
@@ -88,25 +87,18 @@ public class CamerasController : MonoBehaviour
 
     void OrbitCamera()
     {
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-        {
-            float mouseX = Input.GetAxis("Mouse X");
-            float mouseY = Input.GetAxis("Mouse Y");
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
 
-            Vector3 rotation = new Vector3(-mouseY, mouseX, 0f) * rotationSpeed;
+        Vector3 rotation = new Vector3(-mouseY, mouseX, 0f) * rotationSpeed;
 
-            // Rotate camera around the orbit point
-            cameraData[activeCameraIndex].camera.transform.RotateAround(cameraOrbitPoint.transform.position, Vector3.up, rotation.y); // Rotate around Y-axis
-            cameraData[activeCameraIndex].camera.transform.RotateAround(cameraOrbitPoint.transform.position, cameraData[activeCameraIndex].camera.transform.right, rotation.x); // Rotate around X-axis
-        }
+        // Rotate camera orbit point (parent of all cameras)
+        cameraOrbitPoint.Rotate(Vector3.up, rotation.y, Space.World); // Rotate around Y-axis
+        cameraOrbitPoint.Rotate(cameraOrbitPoint.right, rotation.x, Space.World); // Rotate around X-axis
     }
 
-    void ResetCameraPosition()
+    void ResetCameraOrbitPointRotation()
     {
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
-        {
-            // Reset the camera to its initial position and rotation
-            cameraData[activeCameraIndex].ResetPositionAndRotation();
-        }
+        cameraOrbitPoint.rotation = initialOrbitPointRotation; // Reset rotation to initial rotation
     }
 }
