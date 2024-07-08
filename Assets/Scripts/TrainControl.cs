@@ -102,7 +102,7 @@ public class trainControl : MonoBehaviour
             Debug.Log("Autopilot " + (autopilot ? "enabled" : "disabled"));
         }
 
-        if (autopilot && Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+        if (autopilot && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S)))
         {
             autopilot = false;
             Debug.Log("Autopilot disabled");
