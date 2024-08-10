@@ -14,6 +14,7 @@ public class trainControl : MonoBehaviour
     [SerializeField, ReadOnly(true)]
     private float currentSpeedKmh = 0.0f; // Current speed in km/h
     private bool autopilot = false; // Autopilot mode flag
+    public SpawnManager spawnManager;
 
     // Start is called before the first frame update
     void Start()
@@ -107,5 +108,10 @@ public class trainControl : MonoBehaviour
             autopilot = false;
             Debug.Log("Autopilot disabled");
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        spawnManager.SpawnTriggerEntered();
     }
 }
