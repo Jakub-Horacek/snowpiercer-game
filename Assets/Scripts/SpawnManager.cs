@@ -5,20 +5,17 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GroundSpawner groundSpawner;
-    // Start is called before the first frame update
-    void Start()
+
+    public void SpawnTriggerEntered(float trainSpeed, string colliderName)
     {
+        if (trainSpeed > 0 && colliderName.Contains("Front"))
+        {
+            groundSpawner.MoveGroundInFront();
+        }
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void SpawnTriggerEntered()
-    {
-        groundSpawner.MoveGround();
+        if (trainSpeed < 0 && colliderName.Contains("Back"))
+        {
+            groundSpawner.MoveGroundBehind();
+        }
     }
 }

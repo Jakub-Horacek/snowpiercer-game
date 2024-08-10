@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Train
   - Ground Tile
+  - CameraIgnore
   layers:
   - Default
   - TransparentFX

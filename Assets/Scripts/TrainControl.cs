@@ -112,6 +112,6 @@ public class trainControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        spawnManager.SpawnTriggerEntered();
+        spawnManager.SpawnTriggerEntered(currentSpeedKmh, other.name);
     }
 }

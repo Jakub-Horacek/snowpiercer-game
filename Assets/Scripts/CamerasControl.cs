@@ -147,7 +147,7 @@ public class CamerasController : MonoBehaviour
         if (Physics.Raycast(cameraOrbitPoint.position, direction, out RaycastHit hit, maxDistance))
         {
             // If there's a collision, adjust the camera distance
-            if (hit.collider.gameObject != activeCamera)
+            if (hit.collider.gameObject != activeCamera && !hit.collider.gameObject.CompareTag("CameraIgnore"))
             {
                 distance = Mathf.Clamp(hit.distance - collisionOffset, minDistance, maxDistance);
             }

@@ -17,12 +17,21 @@ public class GroundSpawner : MonoBehaviour
         }
     }
 
-    public void MoveGround()
+    public void MoveGroundInFront()
     {
         GameObject moveGround = groundTiles[0];
         groundTiles.Remove(moveGround);
         float newZ = groundTiles[groundTiles.Count - 1].transform.position.z + tilesLength;
         moveGround.transform.position = new Vector3(-500, 0, newZ);
         groundTiles.Add(moveGround);
+    }
+
+    public void MoveGroundBehind()
+    {
+        GameObject moveGround = groundTiles[groundTiles.Count - 1];
+        groundTiles.Remove(moveGround);
+        float newZ = groundTiles[0].transform.position.z - tilesLength;
+        moveGround.transform.position = new Vector3(-500, 0, newZ);
+        groundTiles.Insert(0, moveGround);
     }
 }

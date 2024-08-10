@@ -342,7 +342,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2138557208}
-  - component: {fileID: 2138557207}
   - component: {fileID: 2138557210}
   - component: {fileID: 2138557209}
   m_Layer: 0
@@ -352,21 +351,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2138557207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2138557206}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f806ed4d0d1e46b181ff4c511a29123, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileLength: 1000
-  tilesOnEachSide: 2
-  tilePrefab: {fileID: 8300081684492783066, guid: 29db3dafd2e6d4d62a83cf682dad76dc, type: 3}
 --- !u!4 &2138557208
 Transform:
   m_ObjectHideFlags: 0
