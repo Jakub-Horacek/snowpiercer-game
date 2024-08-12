@@ -357,13 +357,13 @@ MonoBehaviour:
   maxBackwardSpeedKmh: 100
   forwardAcceleration: 20
   backwardAcceleration: 10
-  currentSpeedKmh: 0
+  decelerationType: 0
   forwardColor: {r: 0.19215687, g: 0.9882353, b: 0.99607843, a: 1}
   backwardColor: {r: 0.5294118, g: 0.15294118, b: 0.15294118, a: 1}
-  ForwardSpeedometer: {fileID: 0}
-  BackwardSpeedometer: {fileID: 0}
-  SpeedText: {fileID: 0}
-  AutopilotIndicator: {fileID: 0}
+  forwardSpeedometer: {fileID: 0}
+  backwardSpeedometer: {fileID: 0}
+  speedText: {fileID: 0}
+  autopilotIndicator: {fileID: 0}
   spawnManager: {fileID: 0}
 --- !u!64 &2183967189813390261
 MeshCollider:
