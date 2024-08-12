@@ -101,7 +101,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 2500
   field of view: 70
   orthographic: 0
   orthographic size: 5
@@ -193,7 +193,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 2500
   field of view: 70
   orthographic: 0
   orthographic size: 5
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 6622806536322585983}
   m_Layer: 0
   m_Name: Snowpiercer
-  m_TagString: Untagged
+  m_TagString: Train
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,7 +251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5907446406608823477}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0.00000005338508, z: 0.00000005338508, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1, y: 1.61, z: -6.6966667}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -259,7 +259,7 @@ Transform:
   - {fileID: 7259273655969810890}
   - {fileID: 7142631465344718649}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &7863139869406327210
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -339,7 +339,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 6
   m_CollisionDetection: 0
 --- !u!114 &2012607711040196094
 MonoBehaviour:
@@ -353,11 +353,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059a0e4efd73f4a68a86d9918a117433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForwardSpeedKmh: 200
+  maxForwardSpeedKmh: 500
   maxBackwardSpeedKmh: 100
   forwardAcceleration: 20
   backwardAcceleration: 10
   currentSpeedKmh: 0
+  forwardColor: {r: 0.19215687, g: 0.9882353, b: 0.99607843, a: 1}
+  backwardColor: {r: 0.5294118, g: 0.15294118, b: 0.15294118, a: 1}
+  ForwardSpeedometer: {fileID: 0}
+  BackwardSpeedometer: {fileID: 0}
+  SpeedText: {fileID: 0}
+  AutopilotIndicator: {fileID: 0}
+  spawnManager: {fileID: 0}
 --- !u!64 &2183967189813390261
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -399,8 +406,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.102033496, y: 0.80022067, z: 0.1286748}
-  m_Center: {x: 0.000000078231096, y: -0.037229896, z: 0.07122789}
+  m_Size: {x: 0.102033496, y: 0.8002207, z: 0.13214609}
+  m_Center: {x: 0.000000076293944, y: -0.037229918, z: 0.0694924}
 --- !u!114 &6622806536322585983
 MonoBehaviour:
   m_ObjectHideFlags: 0
