@@ -1288,9 +1288,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1594039381}
     - target: {fileID: 2012607711040196094, guid: 73691254e35af42b1bc72da3f5a39b55, type: 3}
+      propertyPath: speedText
+      value: 
+      objectReference: {fileID: 1594039381}
+    - target: {fileID: 2012607711040196094, guid: 73691254e35af42b1bc72da3f5a39b55, type: 3}
       propertyPath: spawnManager
       value: 
       objectReference: {fileID: 2138557209}
+    - target: {fileID: 2012607711040196094, guid: 73691254e35af42b1bc72da3f5a39b55, type: 3}
+      propertyPath: currentSpeedKmh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012607711040196094, guid: 73691254e35af42b1bc72da3f5a39b55, type: 3}
+      propertyPath: decelerationType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2012607711040196094, guid: 73691254e35af42b1bc72da3f5a39b55, type: 3}
       propertyPath: AutopilotIndicator
       value: 
@@ -1300,7 +1312,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 23421902}
     - target: {fileID: 2012607711040196094, guid: 73691254e35af42b1bc72da3f5a39b55, type: 3}
+      propertyPath: autopilotIndicator
+      value: 
+      objectReference: {fileID: 1364643758}
+    - target: {fileID: 2012607711040196094, guid: 73691254e35af42b1bc72da3f5a39b55, type: 3}
+      propertyPath: forwardSpeedometer
+      value: 
+      objectReference: {fileID: 23421902}
+    - target: {fileID: 2012607711040196094, guid: 73691254e35af42b1bc72da3f5a39b55, type: 3}
       propertyPath: BackwardSpeedometer
+      value: 
+      objectReference: {fileID: 1731869883}
+    - target: {fileID: 2012607711040196094, guid: 73691254e35af42b1bc72da3f5a39b55, type: 3}
+      propertyPath: backwardSpeedometer
       value: 
       objectReference: {fileID: 1731869883}
     - target: {fileID: 5907446406608823477, guid: 73691254e35af42b1bc72da3f5a39b55, type: 3}
